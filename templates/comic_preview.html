@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comic Preview</title>
+    <style>
+        body { font-family: Arial; background: #111; color: white; padding: 20px; }
+        .comic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .panel { border: 2px solid #ffcc00; border-radius: 10px; padding: 10px; background: #222; }
+        .panel img { width: 100%; border-radius: 8px; }
+        h1 { color: #ffcc00; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>🔥 {{ character }} Comic - PREVIEW SUCCESS! 🔥</h1>
+    <p style="text-align:center">Story generated! {{ layout|length }} panels</p>
+    
+    <div class="comic-grid">
+        {% for p in layout %}
+        <div class="panel">
+            <h3>Panel {{ p.panel_number }}</h3>
+            <img src="{{ p.image }}" alt="panel">
+            <p><b>Text:</b> {{ p.text }}</p>
+            <p><i>{{ p.dialogue }}</i></p>
+            <small>{{ p.image_prompt }}</small>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div style="text-align:center; margin-top:30px;">
+        <a href="/" style="background:#ffcc00; padding:12px 20px; color:black; text-decoration:none; border-radius:8px; font-weight:bold;">Generate New Comic</a>
+    </div>
+</body>
+</html>
